@@ -1,0 +1,105 @@
+body {
+    background-color: #fff; /* White background */
+    color: #000; /* Black text */
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+}
+
+.main-table {
+    width: 100%;
+    border: 50px solid #272929; /* Standard black border */
+    border-collapse: collapse;
+}
+
+.header {
+    background-color: #570987; /* Atomic Purple background */
+	font-family: 'LiquidCrystal', monospace;
+	opacity: .85;
+    text-align: left;
+    padding: 15px;
+    border-bottom: 2px solid #800080; /* Standard purple border */
+}
+
+.header h1 {
+    color: #c4bebb; /* Gameboy Gray text for "Welcome to The Void */
+    margin: 0;
+    text-align: center; /* Ensure text is centered */
+    display: inline-block; /* Allow centering with margin */
+    width: 100%; /* Full width to center within header */
+}
+
+/* Style for individual character spans */
+.char {
+    display: inline-block; /* For initial width measurement */
+    white-space: pre; /* Preserve spaces */
+}
+
+/* Drop animation */
+.char.drop {
+    animation: drop 1s ease forwards;
+}
+
+@keyframes drop {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(50px); opacity: 0; }
+}
+
+marquee {
+    color: #c4bebb; /* Game Boy gray text */
+    font-size: 18px;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #f0f0f0; /* Light gray for contrast */
+    padding: 15px;
+    vertical-align: top;
+    border-right: 2px solid #272929; /* Standard purple border */
+}
+
+.sidebar h2 {
+    color: #800080; /* Standard purple text */
+    text-decoration: underline;
+}
+
+.sidebar ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+
+.sidebar a {
+    color: #000; /* Black links */
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    color: #800080; /* Standard purple on hover */
+    text-decoration: underline;
+}
+
+.content {
+    padding: 20px;
+    vertical-align: top;
+}
+
+.content h2 {
+    color: #800080; /* Standard purple headings */
+    border-bottom: 1px dashed #000; /* Black dashed border */
+}
+
+.content h3 {
+    color: #000; /* Black subheadings */
+}
+
+p, ul {
+    line-height: 2;
+}
+
+.footer {
+    background-color: #570987; /*Atomic Purple background */
+    text-align: center;
+    padding: 10px;
+    border-top: 2px solid #800080; /* Standard purple border */
+    color: #fff; /* White text for contrast */
+}
