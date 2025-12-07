@@ -1,5 +1,5 @@
 body {
-    background-color: #F9F6EE; /* White background */
+    background-color: #F9F6EE; /* Bone White background */
     color: #000; /* Black text */
     font-family: 'Courier New', monospace;
     margin: 0;
@@ -52,14 +52,14 @@ marquee {
 
 .sidebar {
     width: 20%;
-    background-color: #f0f0f0; /* Light gray for contrast */
+    background-color: #F9F6EE; /* Bone White */
     padding: 15px;
     vertical-align: top;
-    border-right: 2px solid #272929; /* Standard purple border */
+    border-right: 2px solid #36454f; /* Charcoal border */
 }
 
 .sidebar h2 {
-    color: #800080; /* Standard purple text */
+    color: #36454f; /* Charcoal text */
     text-decoration: underline;
 }
 
@@ -104,4 +104,5 @@ p, ul {
     color: #fff; /* White text for contrast */
 
 }
+
 
