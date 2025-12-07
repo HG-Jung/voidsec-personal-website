@@ -13,16 +13,16 @@ body {
 }
 
 .header {
-    background-color: #F9F6EE; /* Atomic Purple background */
+    background-color: #F9F6EE; /* Bone white */
 	font-family: 'LiquidCrystal', monospace;
 	opacity: .85;
     text-align: left;
     padding: 15px;
-    border-bottom: 2px solid #F9F6EE; /* Standard purple border */
+    border-bottom: 2px solid #F9F6EE; /* Bone white */
 }
 
 .header h1 {
-    color: #c4bebb; /* Gameboy Gray text for "Welcome to The Void */
+    color: #36454F,; /* Charcoal color text for "Welcome to The Void */
     margin: 0;
     text-align: center; /* Ensure text is centered */
     display: inline-block; /* Allow centering with margin */
@@ -104,3 +104,4 @@ p, ul {
     color: #fff; /* White text for contrast */
 
 }
+
