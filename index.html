@@ -151,8 +151,77 @@
             </td>
         </tr>
     </table>
+<!--			<script>
+			const originalText = "Welcome to The Void";
+			const titleElement = document.getElementById("void-title");
+
+			function wrapCharacters(text) {
+				titleElement.innerHTML = ""; // Clear current content
+				titleElement.style.position = "relative"; // Container for absolute positioning
+				titleElement.style.display = "inline-block"; // Allow width measurement
+				titleElement.style.textAlign = "center"; // Ensure centering within h1
+
+				// Measure total width of the text with spaces
+				const tempSpan = document.createElement("span");
+				tempSpan.textContent = text;
+				tempSpan.style.visibility = "hidden";
+				tempSpan.style.whiteSpace = "pre"; // Preserve spaces in measurement
+				titleElement.appendChild(tempSpan);
+				const totalWidth = tempSpan.offsetWidth;
+				titleElement.removeChild(tempSpan);
+
+				// Center the text block
+				const headerWidth = titleElement.parentElement.offsetWidth;
+				const centerOffset = (headerWidth - totalWidth) / 2;
+				let offset = 0; // Track position relative to start of text
+
+				// Split and wrap each character, including spaces
+				text.split("").forEach(char => {
+					const span = document.createElement("span");
+					span.textContent = char === " " ? "\u00A0" : char; // Use non-breaking space for visibility
+					span.classList.add("char");
+					span.style.position = "absolute";
+					span.style.left = `${centerOffset + offset}px`; // Position from center
+					span.style.whiteSpace = "pre"; // Preserve spacing
+					titleElement.appendChild(span);
+					offset += span.offsetWidth; // Increment by actual width (including spaces)
+				});
+
+				titleElement.style.height = `${titleElement.offsetHeight}px`; // Preserve height
+				titleElement.style.width = `${totalWidth}px`; // Set container width
+				titleElement.style.margin = "0 auto"; // Center the inline-block container
+			}
+
+			function dropRandomCharacter() {
+				const chars = titleElement.getElementsByClassName("char");
+				if (chars.length > 0) {
+					const index = Math.floor(Math.random() * chars.length);
+					const char = chars[index];
+					char.classList.add("drop");
+					char.addEventListener("animationend", () => char.remove()); // Remove after drop
+				}
+			}
+
+			function resetText() {
+				clearInterval(intervalId);
+				wrapCharacters(originalText);
+				startDecay();
+			}
+
+			let intervalId;
+			function startDecay() {
+				intervalId = setInterval(dropRandomCharacter, 2000); // Drop every 2 seconds
+				setTimeout(resetText, 30000); // Reset after 30 seconds
+			}
+
+			// Start with wrapped characters
+			wrapCharacters(originalText);
+			startDecay();
+		</script>
+-->	
 </body>
 
 </html>
+
 
 
