@@ -36,7 +36,7 @@ body {
 }
 
 /* Drop animation */
-.char.drop {
+/*.char.drop {
     animation: drop 1s ease forwards;
 }
 
@@ -44,7 +44,7 @@ body {
     0% { transform: translateY(0); opacity: 1; }
     100% { transform: translateY(50px); opacity: 0; }
 }
-
+*/
 marquee {
     color: #c4bebb; /* Game Boy gray text */
     font-size: 18px;
@@ -84,7 +84,7 @@ marquee {
 }
 
 .content h2 {
-    color: #800080; /* Standard purple headings */
+    color: #36454f; /* Charcoal headings */
     border-bottom: 1px dashed #000; /* Black dashed border */
 }
 
@@ -97,12 +97,13 @@ p, ul {
 }
 
 .footer {
-    background-color: #570987; /*Atomic Purple background */
+    background-color: #F9F6EE; /*Bone White background */
     text-align: center;
     padding: 10px;
     border-top: 2px solid #800080; /* Standard purple border */
-    color: #fff; /* White text for contrast */
+    color: #36454f; /* Charcoal text for contrast */
 
 }
+
 
 
