@@ -36,19 +36,15 @@ body {
 }
 
 /* Drop animation */
-/*.char.drop {
+/*
+.char.drop {
     animation: drop 1s ease forwards;
 }
 
 @keyframes drop {
     0% { transform: translateY(0); opacity: 1; }
     100% { transform: translateY(50px); opacity: 0; }
-}
-*/
-marquee {
-    color: #c4bebb; /* Game Boy gray text */
-    font-size: 18px;
-}
+} */
 
 .sidebar {
     width: 20%;
@@ -104,6 +100,7 @@ p, ul {
     color: #36454f; /* Charcoal text for contrast */
 
 }
+
 
 
 
