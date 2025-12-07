@@ -1,5 +1,5 @@
 body {
-    background-color: #fff; /* White background */
+    background-color: #F9F6EE; /* White background */
     color: #000; /* Black text */
     font-family: 'Courier New', monospace;
     margin: 0;
@@ -13,12 +13,12 @@ body {
 }
 
 .header {
-    background-color: #570987; /* Atomic Purple background */
+    background-color: #F9F6EE; /* Atomic Purple background */
 	font-family: 'LiquidCrystal', monospace;
 	opacity: .85;
     text-align: left;
     padding: 15px;
-    border-bottom: 2px solid #800080; /* Standard purple border */
+    border-bottom: 2px solid #F9F6EE; /* Standard purple border */
 }
 
 .header h1 {
@@ -102,4 +102,5 @@ p, ul {
     padding: 10px;
     border-top: 2px solid #800080; /* Standard purple border */
     color: #fff; /* White text for contrast */
+
 }
