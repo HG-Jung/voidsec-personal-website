@@ -96,10 +96,11 @@ p, ul {
     background-color: #F9F6EE; /*Bone White background */
     text-align: center;
     padding: 10px;
-    border-top: 2px solid #800080; /* Standard purple border */
+    border-top: 2px solid #000; /* Standard purple border */
     color: #36454f; /* Charcoal text for contrast */
 
 }
+
 
 
 
