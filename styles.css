@@ -1,6 +1,6 @@
 body {
     background-color: #F9F6EE; /* Bone White background */
-    color: #000; /* Black text */
+    color: #36454F; /* Black text */
     font-family: 'Courier New', monospace;
     margin: 0;
     padding: 0;
@@ -22,7 +22,7 @@ body {
 }
 
 .header h1 {
-    color: #36454F,; /* Charcoal color text for "Welcome to The Void */
+    color: #36454F; /* Charcoal color text for "Welcome to The Void */
     margin: 0;
     text-align: center; /* Ensure text is centered */
     display: inline-block; /* Allow centering with margin */
@@ -100,6 +100,7 @@ p, ul {
     color: #36454f; /* Charcoal text for contrast */
 
 }
+
 
 
 
