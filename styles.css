@@ -35,17 +35,6 @@ body {
     white-space: pre; /* Preserve spaces */
 }
 
-/* Drop animation */
-/*
-.char.drop {
-    animation: drop 1s ease forwards;
-}
-
-@keyframes drop {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(50px); opacity: 0; }
-} */
-
 .sidebar {
     width: 20%;
     background-color: #F9F6EE; /* Bone White */
@@ -100,6 +89,7 @@ p, ul {
     color: #36454f; /* Charcoal text for contrast */
 
 }
+
 
 
 
