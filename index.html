@@ -127,165 +127,165 @@
   							<summary>ProxMox Lab Setup Notes</summary>
 						  	<!-- This is the content that will be hidden or shown -->
 						  		<p>
-									Downloaded ProxMox VE ISO
-									Used Rufus to format USB stick for ISO install
-									Plugged USB into old Dell server
-									Booted into BIOS and booted from USB stick
-									Chose graphical install
-									Set Target Harddisk to the single SSD 1tb drive in the dell server using an xfs file system (if multiple drives/redundant setup I would have used ZFS)
-									Setup region
-									Setup admin password and email address
-									Set static IP
-									Rebooted and completed the install
+									Downloaded ProxMox VE ISO<br>
+									Used Rufus to format USB stick for ISO install<br>
+									Plugged USB into old Dell server<br>
+									Booted into BIOS and booted from USB stick<br>
+									Chose graphical install<br>
+									Set Target Harddisk to the single SSD 1tb drive in the dell server using an xfs file system (if multiple drives/redundant setup I would have used ZFS)<br>
+									Setup region<br>
+									Setup admin password and email address<br>
+									Set static IP<br>
+									Rebooted and completed the install<br>
 									
-									loaded my kali ISO under my local storage on node localhost and added and ISO image, under "ISO Images"
-									Went to top right hand corner of ProxMox and clicked on Create VM
-									went through the standard setup options to configure hardware
-									started my install
-									note to anyone else - if you see your image install just keep looping don't forget to change the boot order/remove the iso image from the cd/rom under your vms hardware :)
-									logged into kali and updated and upgraded my packages
-									created a base line snapshot
+									loaded my kali ISO under my local storage on node localhost and added and ISO image, under "ISO Images"<br>
+									Went to top right hand corner of ProxMox and clicked on Create VM<br>
+									went through the standard setup options to configure hardware<br>
+									started my install<br>
+									note to anyone else - if you see your image install just keep looping don't forget to change the boot order/remove the iso image from the cd/rom under your vms hardware :)<br>
+									logged into kali and updated and upgraded my packages<br>
+									created a base line snapshot<br><br>
 									
-									loaded my ubuntu iso under my local storage on node localhost and added ISO image under "ISO images"
-									followed roughly the same steps for kali
+									loaded my ubuntu iso under my local storage on node localhost and added ISO image under "ISO images"<br>
+									followed roughly the same steps for kali<br><br>
 									
-									Same thing for windows eval, however, I need to also install virtio-win.iso by putting it into the hardware cd rom and then finding it in my windows 10 VM and installing it.
+									Same thing for windows eval, however, I need to also install virtio-win.iso by putting it into the hardware cd rom and then finding it in my windows 10 VM and installing it.<br><br>
 
-									For metasploitable, slightly different, had to upload the .vmdk via scp to proxmox server:
+									For metasploitable, slightly different, had to upload the .vmdk via scp to proxmox server:<br><br>
 
-									C:\iso files>scp Metasploitable.vmdk root@172.16.0.10:/root/
-									The authenticity of host '172.16.0.10 (172.16.0.10)' can't be established.
-									ED25519 key fingerprint is SHA256:xRVqOhKSPKc3291TvsXAU3O+tNAqnwcu4zYZeaH+MxU.
-									This key is not known by any other names.
-									Are you sure you want to continue connecting (yes/no/[fingerprint])?
-									Warning: Permanently added '172.16.0.10' (ED25519) to the list of known hosts.
-									root@172.16.0.10's password:
-									Permission denied, please try again.
-									root@172.16.0.10's password:
+									C:\iso files>scp Metasploitable.vmdk root@172.16.0.10:/root/<br>
+									The authenticity of host '172.16.0.10 (172.16.0.10)' can't be established.<br>
+									ED25519 key fingerprint is SHA256:xRVqOhKSPKc3291TvsXAU3O+tNAqnwcu4zYZeaH+MxU.<br>
+									This key is not known by any other names.<br>
+									Are you sure you want to continue connecting (yes/no/[fingerprint])?<br>
+									Warning: Permanently added '172.16.0.10' (ED25519) to the list of known hosts.<br>
+									root@172.16.0.10's password:<br>
+									Permission denied, please try again.<br>
+									root@172.16.0.10's password:<br>
 									
-									root@localhost:~# qm importdisk 103 /root/Metasploitable.vmdk local-lvm --format qcow2
-									importing disk '/root/Metasploitable.vmdk' to VM 103 ...
-									format 'qcow2' is not supported by the target storage - using 'raw' instead
-									  Logical volume "vm-103-disk-0" created.
-									  Logical volume pve/vm-103-disk-0 changed.
-									transferred 0.0 B of 8.0 GiB (0.00%)
-									transferred 81.9 MiB of 8.0 GiB (1.00%)
-									transferred 163.8 MiB of 8.0 GiB (2.00%)
-									transferred 245.8 MiB of 8.0 GiB (3.00%)
-									transferred 327.7 MiB of 8.0 GiB (4.00%)
-									transferred 409.6 MiB of 8.0 GiB (5.00%)
-									transferred 491.5 MiB of 8.0 GiB (6.00%)
-									transferred 573.4 MiB of 8.0 GiB (7.00%)
-									transferred 655.4 MiB of 8.0 GiB (8.00%)
-									transferred 737.3 MiB of 8.0 GiB (9.00%)
-									transferred 820.0 MiB of 8.0 GiB (10.01%)
-									transferred 901.9 MiB of 8.0 GiB (11.01%)
-									transferred 983.9 MiB of 8.0 GiB (12.01%)
-									transferred 1.0 GiB of 8.0 GiB (13.01%)
-									transferred 1.1 GiB of 8.0 GiB (14.01%)
-									transferred 1.2 GiB of 8.0 GiB (15.01%)
-									transferred 1.3 GiB of 8.0 GiB (16.01%)
-									transferred 1.4 GiB of 8.0 GiB (17.01%)
-									transferred 1.4 GiB of 8.0 GiB (18.01%)
-									transferred 1.5 GiB of 8.0 GiB (19.01%)
-									transferred 1.6 GiB of 8.0 GiB (20.01%)
-									transferred 1.7 GiB of 8.0 GiB (21.01%)
-									transferred 1.8 GiB of 8.0 GiB (22.01%)
-									transferred 1.8 GiB of 8.0 GiB (23.01%)
-									transferred 1.9 GiB of 8.0 GiB (24.01%)
-									transferred 2.0 GiB of 8.0 GiB (25.01%)
-									transferred 2.1 GiB of 8.0 GiB (26.01%)
-									transferred 2.2 GiB of 8.0 GiB (27.01%)
-									transferred 2.2 GiB of 8.0 GiB (28.02%)
-									transferred 2.3 GiB of 8.0 GiB (29.02%)
-									transferred 2.4 GiB of 8.0 GiB (30.02%)
-									transferred 2.5 GiB of 8.0 GiB (31.02%)
-									transferred 2.6 GiB of 8.0 GiB (32.02%)
-									transferred 2.6 GiB of 8.0 GiB (33.02%)
-									transferred 2.7 GiB of 8.0 GiB (34.02%)
-									transferred 2.8 GiB of 8.0 GiB (35.02%)
-									transferred 2.9 GiB of 8.0 GiB (36.02%)
-									transferred 3.0 GiB of 8.0 GiB (37.02%)
-									transferred 3.0 GiB of 8.0 GiB (38.02%)
-									transferred 3.1 GiB of 8.0 GiB (39.02%)
-									transferred 3.2 GiB of 8.0 GiB (40.02%)
-									transferred 3.3 GiB of 8.0 GiB (41.02%)
-									transferred 3.4 GiB of 8.0 GiB (42.02%)
-									transferred 3.4 GiB of 8.0 GiB (43.02%)
-									transferred 3.5 GiB of 8.0 GiB (44.02%)
-									transferred 3.6 GiB of 8.0 GiB (45.02%)
-									transferred 3.7 GiB of 8.0 GiB (46.02%)
-									transferred 3.8 GiB of 8.0 GiB (47.03%)
-									transferred 3.8 GiB of 8.0 GiB (48.03%)
-									transferred 3.9 GiB of 8.0 GiB (49.03%)
-									transferred 4.0 GiB of 8.0 GiB (50.03%)
-									transferred 4.1 GiB of 8.0 GiB (51.03%)
-									transferred 4.2 GiB of 8.0 GiB (52.03%)
-									transferred 4.2 GiB of 8.0 GiB (53.03%)
-									transferred 4.3 GiB of 8.0 GiB (54.03%)
-									transferred 4.4 GiB of 8.0 GiB (55.03%)
-									transferred 4.5 GiB of 8.0 GiB (56.03%)
-									transferred 4.6 GiB of 8.0 GiB (57.03%)
-									transferred 4.6 GiB of 8.0 GiB (58.03%)
-									transferred 4.7 GiB of 8.0 GiB (59.03%)
-									transferred 4.8 GiB of 8.0 GiB (60.03%)
-									transferred 4.9 GiB of 8.0 GiB (61.03%)
-									transferred 5.0 GiB of 8.0 GiB (62.03%)
-									transferred 5.0 GiB of 8.0 GiB (63.03%)
-									transferred 5.1 GiB of 8.0 GiB (64.03%)
-									transferred 5.2 GiB of 8.0 GiB (65.04%)
-									transferred 5.3 GiB of 8.0 GiB (66.04%)
-									transferred 5.4 GiB of 8.0 GiB (67.04%)
-									transferred 5.4 GiB of 8.0 GiB (68.04%)
-									transferred 5.5 GiB of 8.0 GiB (69.04%)
-									transferred 5.6 GiB of 8.0 GiB (70.04%)
-									transferred 5.7 GiB of 8.0 GiB (71.04%)
-									transferred 5.8 GiB of 8.0 GiB (72.04%)
-									transferred 5.8 GiB of 8.0 GiB (73.04%)
-									transferred 5.9 GiB of 8.0 GiB (74.04%)
-									transferred 6.0 GiB of 8.0 GiB (75.04%)
-									transferred 6.1 GiB of 8.0 GiB (76.04%)
-									transferred 6.2 GiB of 8.0 GiB (77.04%)
-									transferred 6.2 GiB of 8.0 GiB (78.04%)
-									transferred 6.3 GiB of 8.0 GiB (79.04%)
-									transferred 6.4 GiB of 8.0 GiB (80.04%)
-									transferred 6.5 GiB of 8.0 GiB (81.04%)
-									transferred 6.6 GiB of 8.0 GiB (82.04%)
-									transferred 6.6 GiB of 8.0 GiB (83.04%)
-									transferred 6.7 GiB of 8.0 GiB (84.05%)
-									transferred 6.8 GiB of 8.0 GiB (85.05%)
-									transferred 6.9 GiB of 8.0 GiB (86.05%)
-									transferred 7.0 GiB of 8.0 GiB (87.05%)
-									transferred 7.0 GiB of 8.0 GiB (88.05%)
-									transferred 7.1 GiB of 8.0 GiB (89.05%)
-									transferred 7.2 GiB of 8.0 GiB (90.05%)
-									transferred 7.3 GiB of 8.0 GiB (91.05%)
-									transferred 7.4 GiB of 8.0 GiB (92.05%)
-									transferred 7.4 GiB of 8.0 GiB (93.05%)
-									transferred 7.5 GiB of 8.0 GiB (94.05%)
-									transferred 7.6 GiB of 8.0 GiB (95.05%)
-									transferred 7.7 GiB of 8.0 GiB (96.05%)
-									transferred 7.8 GiB of 8.0 GiB (97.05%)
-									transferred 7.8 GiB of 8.0 GiB (98.05%)
-									transferred 7.9 GiB of 8.0 GiB (99.05%)
-									transferred 8.0 GiB of 8.0 GiB (100.00%)
+									root@localhost:~# qm importdisk 103 /root/Metasploitable.vmdk local-lvm --format qcow2<br>
+									importing disk '/root/Metasploitable.vmdk' to VM 103 ...<br>
+									format 'qcow2' is not supported by the target storage - using 'raw' instead<br>
+									  Logical volume "vm-103-disk-0" created.<br>
+									  Logical volume pve/vm-103-disk-0 changed.<br>
+									transferred 0.0 B of 8.0 GiB (0.00%)<br>
+									transferred 81.9 MiB of 8.0 GiB (1.00%)<br>
+									transferred 163.8 MiB of 8.0 GiB (2.00%)<br>
+									transferred 245.8 MiB of 8.0 GiB (3.00%)<br>
+									transferred 327.7 MiB of 8.0 GiB (4.00%)<br>
+									transferred 409.6 MiB of 8.0 GiB (5.00%)<br>
+									transferred 491.5 MiB of 8.0 GiB (6.00%)<br>
+									transferred 573.4 MiB of 8.0 GiB (7.00%)<br>
+									transferred 655.4 MiB of 8.0 GiB (8.00%)<br>
+									transferred 737.3 MiB of 8.0 GiB (9.00%)<br>
+									transferred 820.0 MiB of 8.0 GiB (10.01%)<br>
+									transferred 901.9 MiB of 8.0 GiB (11.01%)<br>
+									transferred 983.9 MiB of 8.0 GiB (12.01%)<br>
+									transferred 1.0 GiB of 8.0 GiB (13.01%)<br>
+									transferred 1.1 GiB of 8.0 GiB (14.01%)<br>
+									transferred 1.2 GiB of 8.0 GiB (15.01%)<br>
+									transferred 1.3 GiB of 8.0 GiB (16.01%)<br>
+									transferred 1.4 GiB of 8.0 GiB (17.01%)<br>
+									transferred 1.4 GiB of 8.0 GiB (18.01%)<br>
+									transferred 1.5 GiB of 8.0 GiB (19.01%)<br>
+									transferred 1.6 GiB of 8.0 GiB (20.01%)<br>
+									transferred 1.7 GiB of 8.0 GiB (21.01%)<br>
+									transferred 1.8 GiB of 8.0 GiB (22.01%)<br>
+									transferred 1.8 GiB of 8.0 GiB (23.01%)<br>
+									transferred 1.9 GiB of 8.0 GiB (24.01%)<br>
+									transferred 2.0 GiB of 8.0 GiB (25.01%)<br>
+									transferred 2.1 GiB of 8.0 GiB (26.01%)<br>
+									transferred 2.2 GiB of 8.0 GiB (27.01%)<br>
+									transferred 2.2 GiB of 8.0 GiB (28.02%)<br>
+									transferred 2.3 GiB of 8.0 GiB (29.02%)<br>
+									transferred 2.4 GiB of 8.0 GiB (30.02%)<br>
+									transferred 2.5 GiB of 8.0 GiB (31.02%)<br>
+									transferred 2.6 GiB of 8.0 GiB (32.02%)<br>
+									transferred 2.6 GiB of 8.0 GiB (33.02%)<br>
+									transferred 2.7 GiB of 8.0 GiB (34.02%)<br>
+									transferred 2.8 GiB of 8.0 GiB (35.02%)<br>
+									transferred 2.9 GiB of 8.0 GiB (36.02%)<br>
+									transferred 3.0 GiB of 8.0 GiB (37.02%)<br>
+									transferred 3.0 GiB of 8.0 GiB (38.02%)<br>
+									transferred 3.1 GiB of 8.0 GiB (39.02%)<br>
+									transferred 3.2 GiB of 8.0 GiB (40.02%)<br>
+									transferred 3.3 GiB of 8.0 GiB (41.02%)<br>
+									transferred 3.4 GiB of 8.0 GiB (42.02%)<br>
+									transferred 3.4 GiB of 8.0 GiB (43.02%)<br>
+									transferred 3.5 GiB of 8.0 GiB (44.02%)<br>
+									transferred 3.6 GiB of 8.0 GiB (45.02%)<br>
+									transferred 3.7 GiB of 8.0 GiB (46.02%)<br>
+									transferred 3.8 GiB of 8.0 GiB (47.03%)<br>
+									transferred 3.8 GiB of 8.0 GiB (48.03%)<br>
+									transferred 3.9 GiB of 8.0 GiB (49.03%)<br>
+									transferred 4.0 GiB of 8.0 GiB (50.03%)<br>
+									transferred 4.1 GiB of 8.0 GiB (51.03%)<br>
+									transferred 4.2 GiB of 8.0 GiB (52.03%)<br>
+									transferred 4.2 GiB of 8.0 GiB (53.03%)<br>
+									transferred 4.3 GiB of 8.0 GiB (54.03%)<br>
+									transferred 4.4 GiB of 8.0 GiB (55.03%)<br>
+									transferred 4.5 GiB of 8.0 GiB (56.03%)<br>
+									transferred 4.6 GiB of 8.0 GiB (57.03%)<br>
+									transferred 4.6 GiB of 8.0 GiB (58.03%)<br>
+									transferred 4.7 GiB of 8.0 GiB (59.03%)<br>
+									transferred 4.8 GiB of 8.0 GiB (60.03%)<br>
+									transferred 4.9 GiB of 8.0 GiB (61.03%)<br>
+									transferred 5.0 GiB of 8.0 GiB (62.03%)<br>
+									transferred 5.0 GiB of 8.0 GiB (63.03%)<br>
+									transferred 5.1 GiB of 8.0 GiB (64.03%)<br>
+									transferred 5.2 GiB of 8.0 GiB (65.04%)<br>
+									transferred 5.3 GiB of 8.0 GiB (66.04%)<br>
+									transferred 5.4 GiB of 8.0 GiB (67.04%)<br>
+									transferred 5.4 GiB of 8.0 GiB (68.04%)<br>
+									transferred 5.5 GiB of 8.0 GiB (69.04%)<br>
+									transferred 5.6 GiB of 8.0 GiB (70.04%)<br>
+									transferred 5.7 GiB of 8.0 GiB (71.04%)<br>
+									transferred 5.8 GiB of 8.0 GiB (72.04%)<br>
+									transferred 5.8 GiB of 8.0 GiB (73.04%)<br>
+									transferred 5.9 GiB of 8.0 GiB (74.04%)<br>
+									transferred 6.0 GiB of 8.0 GiB (75.04%)<br>
+									transferred 6.1 GiB of 8.0 GiB (76.04%)<br>
+									transferred 6.2 GiB of 8.0 GiB (77.04%)<br>
+									transferred 6.2 GiB of 8.0 GiB (78.04%)<br>
+									transferred 6.3 GiB of 8.0 GiB (79.04%)<br>
+									transferred 6.4 GiB of 8.0 GiB (80.04%)<br>
+									transferred 6.5 GiB of 8.0 GiB (81.04%)<br>
+									transferred 6.6 GiB of 8.0 GiB (82.04%)<br>
+									transferred 6.6 GiB of 8.0 GiB (83.04%)<br>
+									transferred 6.7 GiB of 8.0 GiB (84.05%)<br>
+									transferred 6.8 GiB of 8.0 GiB (85.05%)<br>
+									transferred 6.9 GiB of 8.0 GiB (86.05%)<br>
+									transferred 7.0 GiB of 8.0 GiB (87.05%)<br>
+									transferred 7.0 GiB of 8.0 GiB (88.05%)<br>
+									transferred 7.1 GiB of 8.0 GiB (89.05%)<br>
+									transferred 7.2 GiB of 8.0 GiB (90.05%)<br>
+									transferred 7.3 GiB of 8.0 GiB (91.05%)<br>
+									transferred 7.4 GiB of 8.0 GiB (92.05%)<br>
+									transferred 7.4 GiB of 8.0 GiB (93.05%)<br>
+									transferred 7.5 GiB of 8.0 GiB (94.05%)<br>
+									transferred 7.6 GiB of 8.0 GiB (95.05%)<br>
+									transferred 7.7 GiB of 8.0 GiB (96.05%)<br>
+									transferred 7.8 GiB of 8.0 GiB (97.05%)<br>
+									transferred 7.8 GiB of 8.0 GiB (98.05%)<br>
+									transferred 7.9 GiB of 8.0 GiB (99.05%)<br>
+									transferred 8.0 GiB of 8.0 GiB (100.00%)<br>
 									
-									Shut down the VM if it's still running (force stop from Proxmox GUI if needed).
-									Go to VM 103 → Hardware tab.
-									Look for your SCSI Controller line (likely VirtIO SCSI or VirtIO SCSI single — this is the default when importing/attaching disks).
-									Select it → Edit (or Remove if needed, then re-add).
-									Change to LSI 53C895A (also called "Default (LSI 53C895A)" or just "LSI").
-									This emulates an old-school SCSI controller that Metasploitable 2's kernel understands natively (no extra modules needed).
+									Shut down the VM if it's still running (force stop from Proxmox GUI if needed).<br>
+									Go to VM 103 → Hardware tab.<br>
+									Look for your SCSI Controller line (likely VirtIO SCSI or VirtIO SCSI single — this is the default when importing/attaching disks).<br>
+									Select it → Edit (or Remove if needed, then re-add).<br>
+									Change to LSI 53C895A (also called "Default (LSI 53C895A)" or just "LSI").<br>
+									This emulates an old-school SCSI controller that Metasploitable 2's kernel understands natively (no extra modules needed).<br><br>
 									
 									
-									transferred 8.0 GiB of 8.0 GiB (100.00%)
+									transferred 8.0 GiB of 8.0 GiB (100.00%)<br>
 									
-									unused0: successfully imported disk 'local-lvm:vm-103-disk-0'
-									root@localhost:~#
+									unused0: successfully imported disk 'local-lvm:vm-103-disk-0'<br>
+									root@localhost:~#<br>
 									
-									Metasploitable.vmdk                                                                   100% 1856MB 112.7MB/s   00:16
+									Metasploitable.vmdk                                                                   100% 1856MB 112.7MB/s   00:16<br>
 									
-									C:\iso files>
+									C:\iso files><br>
 									
 								</p>
 							</details>
@@ -357,6 +357,7 @@
     </table>
 </body>
 </html>
+
 
 
 
