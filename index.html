@@ -140,11 +140,24 @@
 					Troubleshooting<br>
 					Tips and Tricks
                 </p>
-                <h3>VoIP</h3>
+                <h3>PBX/VoIP</h3>
 					<details>
 					  <summary>Architecture</summary>
 					  <p>
-						  Architecture section
+					  		In my own personal experience, when it comes to installation PBX servers there are generally two scenarios you will run into, at least in my line of work in Hotel/SOHO PBX environments, which, in all fairness is going the way of the Dodo. Nevertheless, let's dive in!<br>
+							You will typically see Host based and Premise based PBX installs, there's also an interesting host+proxy install you can run into as well but we will touch on that at the end, also please keep in mind this is not an exhaustive list of ways to do this, these are just typically what I work in on the daily. :)<br>
+							Host based PBX solution:<br>
+						  	The companies I worked for will use AWS but ultimately it doesn't matter which cloud provider you wish to use, that will boil down to what your needs and experience are. So in the cloud you will have an Asterisk/FreePBX/insertFlavorOfPBXYouWantHere.<br>
+						  	On premise you will typically have a firewall, switch, SIP Phones (hardware based or software based), Analog phones, NVT Phybridge Analog to SIP converters for connecting your SIP phones RJ45 port to an RJ11 2-pair port, and Analog to SIP gateways for true analog devices. This is not an exhaustive list as you will obviously have further materials and components, this is a very high level overview.<br>
+						  	How will this somewhat look like and how will this all connect you might ask? Great question!<br>
+						  	In short it will look something like this top down in a server rack:<br>
+						  	Patch Panel - Neat and manageable cable management<br>
+						  	Firewall - Routing and remote access<br>
+						  	Switch - VLAN support prefably to connect all your components together<br>
+						  	PBX - Call routing, Trunks, Queues, Ring Groups, the heard of the setup essentially!<br>
+						  	NVT Phybridge - Allows you to run SIP phones over 2-pair cross connect wire<br>
+						  	Analog Gateways - Allows you to connect analog phones to the PBX via SIP registartion<br>
+						  	PDU and UPS - Protects equipment in event of brownouts/hard shutdowns<br>
 					  </p>
 					</details>
 					<details>
@@ -397,6 +410,7 @@
     </table>
 </body>
 </html>
+
 
 
 
