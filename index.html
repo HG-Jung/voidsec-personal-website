@@ -185,31 +185,47 @@
   							<summary>ProxMox Lab Setup Notes</summary>
 						  	<!-- This is the content that will be hidden or shown -->
 						  		<p>
-									Downloaded ProxMox VE ISO<br>
-									Used Rufus to format USB stick for ISO install<br>
-									Plugged USB into old Dell server<br>
-									Booted into BIOS and booted from USB stick<br>
-									Chose graphical install<br>
-									Set Target Harddisk to the single SSD 1tb drive in the dell server using an xfs file system (if multiple drives/redundant setup I would have used ZFS)<br>
-									Setup region<br>
-									Setup admin password and email address<br>
-									Set static IP<br>
-									Rebooted and completed the install<br>
+									1. Downloaded ProxMox VE ISO<br>
 									
-									loaded my kali ISO under my local storage on node localhost and added and ISO image, under "ISO Images"<br>
-									Went to top right hand corner of ProxMox and clicked on Create VM<br>
-									went through the standard setup options to configure hardware<br>
-									started my install<br>
-									note to anyone else - if you see your image install just keep looping don't forget to change the boot order/remove the iso image from the cd/rom under your vms hardware :)<br>
-									logged into kali and updated and upgraded my packages<br>
-									created a base line snapshot<br><br>
+									2. Used Rufus to format USB stick for ISO install<br>
 									
-									loaded my ubuntu iso under my local storage on node localhost and added ISO image under "ISO images"<br>
-									followed roughly the same steps for kali<br><br>
+									3. Plugged USB into old Dell server<br>
 									
-									Same thing for windows eval, however, I need to also install virtio-win.iso by putting it into the hardware cd rom and then finding it in my windows 10 VM and installing it.<br><br>
+									4. Booted into BIOS and booted from USB stick<br>
+									
+									5. Chose graphical install<br>
+									
+									6. Set Target Harddisk to the single SSD 1TB drive in the Dell server using an XFS file system (if multiple drives/redundant setup I would have used ZFS)<br>
+									
+									7. Setup region<br>
+									
+									8. Setup admin password and email address<br>
+									
+									9. Set static IP<br>
+									
+									10. Rebooted and completed the install<br>
+									
+									11. loaded my kali ISO under my local storage on node localhost and added and ISO image, under "ISO Images"<br>
+									
+									12. Went to top right hand corner of ProxMox and clicked on Create VM<br>
+									
+									13. Went through the standard setup options to configure hardware<br>
+									
+									14. Started my install<br>
+									
+									NOTE: To anyone else - if you see your image install continue to loop, don't forget to change the boot order/remove the ISO image from the CD/ROM under your VMS hardware :)<br>
+									
+									15. Logged into kali and updated and upgraded my packages<br>
+									
+									16. Created a baseline snapshot<br><br>
+									
+									17. Loaded my ubuntu iso under my local storage on node localhost and added ISO image under "ISO images"<br>
+									
+									Followed roughly the same steps for kali<br>
+									
+									Rinsed and repeated for Windows 10 eval. However, I also had to install virtio-win.iso by putting it into the hardware CD/ROM and then locating it in my Windows 10 VM and installing it.<br>
 
-									For metasploitable, slightly different, had to upload the .vmdk via scp to proxmox server:<br><br>
+									For metasploitable, slightly different, had to upload the .vmdk via scp to proxmox server:<br>
 
 									C:\iso files>scp Metasploitable.vmdk root@172.16.0.10:/root/<br>
 									The authenticity of host '172.16.0.10 (172.16.0.10)' can't be established.<br>
@@ -329,19 +345,22 @@
 									transferred 8.0 GiB of 8.0 GiB (100.00%)<br>
 									
 									Shut down the VM if it's still running (force stop from Proxmox GUI if needed).<br>
+									
 									Go to VM 103 → Hardware tab.<br>
+									
 									Look for your SCSI Controller line (likely VirtIO SCSI or VirtIO SCSI single — this is the default when importing/attaching disks).<br>
+									
 									Select it → Edit (or Remove if needed, then re-add).<br>
+									
 									Change to LSI 53C895A (also called "Default (LSI 53C895A)" or just "LSI").<br>
-									This emulates an old-school SCSI controller that Metasploitable 2's kernel understands natively (no extra modules needed).<br><br>
 									
-									
-									transferred 8.0 GiB of 8.0 GiB (100.00%)<br>
+									This emulates an old-school SCSI controller that Metasploitable 2's kernel understands natively (no extra modules needed).<br>
 									
 									unused0: successfully imported disk 'local-lvm:vm-103-disk-0'<br>
+									
 									root@localhost:~#<br>
 									
-									Metasploitable.vmdk                                                                   100% 1856MB 112.7MB/s   00:16<br>
+									Metasploitable.vmdk 100% 1856MB 112.7MB/s   00:16<br>
 									
 									C:\iso files><br>
 									
