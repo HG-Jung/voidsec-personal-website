@@ -357,14 +357,42 @@
 									C:\iso files><br>
 									
 								</p>
-						</details>
-						<details>
 							<summary>Rust Desk Setup Notes</summary>
 								<p>
+									Self-Hosting RustDesk on Vultr VPS<br>
 									
+									In this project, I set up a self-hosted RustDesk server on a Vultr VPS for secure, private remote desktop access. RustDesk is an excellent open-source TeamViewer/AnyDesk alternative.<br>
+									
+									So why Self-Host RustDesk?<br>
+										<ul>
+										  	<li>Full privacy and control</li>
+										  	<li>No usage limits or recurring fees</li>
+										  	<li>Runs very lightweight (ideal for small teams or personal use)</li>
+										</ul><br><br>
+												
+									1. VPS Selection (Vultr)<br>
+									Location: Los Angeles, CA (closest to me)<br>
+									Type: Shared CPU → High Frequency Compute (recommended over Dedicated CPU or Bare Metal for my particular workload)<br>
+									Specs: 1–2 vCPU / 2 GB RAM (more than sufficient)<br>
+									OS: Ubuntu 24.04 LTS<br>
+									Cost, roughly $6–12/month<br>
+
+									2. Initial Server Setup<br>
+									Deployed the instance and retrieved the temporary root password from the Vultr dashboard.<br>
+									Logged in via SSH using password.<br>
+									Updated the system:Bashapt update && apt upgrade -y<br>
+							
+									3. SSH Key Authentication (Security Hardening)<br>
+									Generated an Ed25519 SSH key on Windows using PowerShell:PowerShellssh-keygen -t ed25519<br>
+									Added the public key to ~/.ssh/authorized_keys on the server.<br>
+									Disabled password login in /etc/ssh/sshd_config:BashPasswordAuthentication no<br>
+									systemctl restart ssh<br>
+									Tested key-based login from new sessions.<br>
+
+									4. Docker Installation
+									Bashbash <(wget -qO- https://get.docker.com)
 								</p>
-						<details>
-                </p>
+						</details>
 				<h2 id="misc-stuff">Misc. Stuff</h2>
 				<h3>Desktop Setup</h3>
                 <p>
