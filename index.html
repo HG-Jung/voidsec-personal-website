@@ -170,6 +170,61 @@
 				<h3>Home Lab</h3>
                 <p>
                     PFSense<br>
+						<details>
+							<summary>PFSense Setup</summary>
+								<p>
+									1. Overview<br><br>
+
+									This section describes the physical and logical network design for my home lab environment The lab hosts a mix of personal and company owned equipment, separated by role and ownership.
+									The primary goals are hands on learning, network segmentation testing, self hosted services, and a safe sandbox for enterprise grade equipment.
+
+									1.1 Scope<br><br>
+									<ul>
+										<li>Personal equipment: Modem, PFSense firewall (fw00), two FortiGate 60E firewalls (fw001 & fw002), Zyxel distribution switch, Zyxel APs, Asterisk PBX, Proxmox server, SIP end points.</li>
+										<li>Company supplied equipment: FortiGate 40F, Ruckus AP, Ruckus switch which is all logically isolated from personal network items.</li>
+									</ul>
+
+									1.2 Design Goals<br><br>
+									<ul>
+										<li>Maintain clear separation between personal and company owned gear</li>
+										<li>Provide multi-firewall architecture for routing and policy testing</li>
+										<li>support VoIP services via Asterisk PBX</li>
+										<li>enable controlled wireless access</li>
+									</ul>
+
+									2. Network Topology<br><br>
+
+									2.1 High-Level Architecture<br><br>
+									The network follows a hierarchial design with the ISP DMARC as the upstream boundary. Traffic flows from the ISP through the modem, then to the PFSense firewall (fw00) acting as the network headend.
+									fw00 distributes WAN connectivity downstream to both FortiGate 60E firewalls (fw001 and fw002), creating a duel-firewall segment for testing and redundancy.<br>
+
+									Topology Summary<br>
+									ISP DMARC  →  Netgear Modem  →  pfSense FW00 (headend)<br>
+									FW00  →  FortiGate FW001  (172.16.0.30)<br>
+									FW00  →  FortiGate FW002  (172.16.0.40)<br>
+									FW00  →  Zyxel GS1920-24HP Distribution Switch<br>
+									Distribution Switch  →  Proxmox (172.16.0.10), Asterisk PBX, Zyxel APs<br>
+									Company Segment: FortiGate 40F, Ruckus Switch, Ruckus AP  [isolated]<br>
+										
+									IP Addressing Scheme<br><br>
+									
+									Network: 172.16.0.0/16<br>
+									Subnet: 172.16.0.0 – 172.16.255.255<br>
+									Range: 65,534 hosts<br>
+									Purpose: Primary lab subnet<br>
+									
+									Network: 172.16.0.x<br>
+									Subnet: 172.16.0.1 – 172.16.0.99<br>									
+									Range: Static assignments<br>									
+									Purpose: Infrastructure devices<br>
+									
+									Network: 172.16.0.x<br>									
+									Subnet: 172.16.0.100+<br>									
+									Rage: DHCP pool (TBD)<br>									
+									Purpose: Dynamic client assignment<br>
+
+								</p>
+						</details>
 					FortiNet<br>
 					Ruckus<br>
 					Servers
@@ -234,106 +289,6 @@
 									format 'qcow2' is not supported by the target storage - using 'raw' instead<br>
 									  Logical volume "vm-103-disk-0" created.<br>
 									  Logical volume pve/vm-103-disk-0 changed.<br>
-									transferred 0.0 B of 8.0 GiB (0.00%)<br>
-									transferred 81.9 MiB of 8.0 GiB (1.00%)<br>
-									transferred 163.8 MiB of 8.0 GiB (2.00%)<br>
-									transferred 245.8 MiB of 8.0 GiB (3.00%)<br>
-									transferred 327.7 MiB of 8.0 GiB (4.00%)<br>
-									transferred 409.6 MiB of 8.0 GiB (5.00%)<br>
-									transferred 491.5 MiB of 8.0 GiB (6.00%)<br>
-									transferred 573.4 MiB of 8.0 GiB (7.00%)<br>
-									transferred 655.4 MiB of 8.0 GiB (8.00%)<br>
-									transferred 737.3 MiB of 8.0 GiB (9.00%)<br>
-									transferred 820.0 MiB of 8.0 GiB (10.01%)<br>
-									transferred 901.9 MiB of 8.0 GiB (11.01%)<br>
-									transferred 983.9 MiB of 8.0 GiB (12.01%)<br>
-									transferred 1.0 GiB of 8.0 GiB (13.01%)<br>
-									transferred 1.1 GiB of 8.0 GiB (14.01%)<br>
-									transferred 1.2 GiB of 8.0 GiB (15.01%)<br>
-									transferred 1.3 GiB of 8.0 GiB (16.01%)<br>
-									transferred 1.4 GiB of 8.0 GiB (17.01%)<br>
-									transferred 1.4 GiB of 8.0 GiB (18.01%)<br>
-									transferred 1.5 GiB of 8.0 GiB (19.01%)<br>
-									transferred 1.6 GiB of 8.0 GiB (20.01%)<br>
-									transferred 1.7 GiB of 8.0 GiB (21.01%)<br>
-									transferred 1.8 GiB of 8.0 GiB (22.01%)<br>
-									transferred 1.8 GiB of 8.0 GiB (23.01%)<br>
-									transferred 1.9 GiB of 8.0 GiB (24.01%)<br>
-									transferred 2.0 GiB of 8.0 GiB (25.01%)<br>
-									transferred 2.1 GiB of 8.0 GiB (26.01%)<br>
-									transferred 2.2 GiB of 8.0 GiB (27.01%)<br>
-									transferred 2.2 GiB of 8.0 GiB (28.02%)<br>
-									transferred 2.3 GiB of 8.0 GiB (29.02%)<br>
-									transferred 2.4 GiB of 8.0 GiB (30.02%)<br>
-									transferred 2.5 GiB of 8.0 GiB (31.02%)<br>
-									transferred 2.6 GiB of 8.0 GiB (32.02%)<br>
-									transferred 2.6 GiB of 8.0 GiB (33.02%)<br>
-									transferred 2.7 GiB of 8.0 GiB (34.02%)<br>
-									transferred 2.8 GiB of 8.0 GiB (35.02%)<br>
-									transferred 2.9 GiB of 8.0 GiB (36.02%)<br>
-									transferred 3.0 GiB of 8.0 GiB (37.02%)<br>
-									transferred 3.0 GiB of 8.0 GiB (38.02%)<br>
-									transferred 3.1 GiB of 8.0 GiB (39.02%)<br>
-									transferred 3.2 GiB of 8.0 GiB (40.02%)<br>
-									transferred 3.3 GiB of 8.0 GiB (41.02%)<br>
-									transferred 3.4 GiB of 8.0 GiB (42.02%)<br>
-									transferred 3.4 GiB of 8.0 GiB (43.02%)<br>
-									transferred 3.5 GiB of 8.0 GiB (44.02%)<br>
-									transferred 3.6 GiB of 8.0 GiB (45.02%)<br>
-									transferred 3.7 GiB of 8.0 GiB (46.02%)<br>
-									transferred 3.8 GiB of 8.0 GiB (47.03%)<br>
-									transferred 3.8 GiB of 8.0 GiB (48.03%)<br>
-									transferred 3.9 GiB of 8.0 GiB (49.03%)<br>
-									transferred 4.0 GiB of 8.0 GiB (50.03%)<br>
-									transferred 4.1 GiB of 8.0 GiB (51.03%)<br>
-									transferred 4.2 GiB of 8.0 GiB (52.03%)<br>
-									transferred 4.2 GiB of 8.0 GiB (53.03%)<br>
-									transferred 4.3 GiB of 8.0 GiB (54.03%)<br>
-									transferred 4.4 GiB of 8.0 GiB (55.03%)<br>
-									transferred 4.5 GiB of 8.0 GiB (56.03%)<br>
-									transferred 4.6 GiB of 8.0 GiB (57.03%)<br>
-									transferred 4.6 GiB of 8.0 GiB (58.03%)<br>
-									transferred 4.7 GiB of 8.0 GiB (59.03%)<br>
-									transferred 4.8 GiB of 8.0 GiB (60.03%)<br>
-									transferred 4.9 GiB of 8.0 GiB (61.03%)<br>
-									transferred 5.0 GiB of 8.0 GiB (62.03%)<br>
-									transferred 5.0 GiB of 8.0 GiB (63.03%)<br>
-									transferred 5.1 GiB of 8.0 GiB (64.03%)<br>
-									transferred 5.2 GiB of 8.0 GiB (65.04%)<br>
-									transferred 5.3 GiB of 8.0 GiB (66.04%)<br>
-									transferred 5.4 GiB of 8.0 GiB (67.04%)<br>
-									transferred 5.4 GiB of 8.0 GiB (68.04%)<br>
-									transferred 5.5 GiB of 8.0 GiB (69.04%)<br>
-									transferred 5.6 GiB of 8.0 GiB (70.04%)<br>
-									transferred 5.7 GiB of 8.0 GiB (71.04%)<br>
-									transferred 5.8 GiB of 8.0 GiB (72.04%)<br>
-									transferred 5.8 GiB of 8.0 GiB (73.04%)<br>
-									transferred 5.9 GiB of 8.0 GiB (74.04%)<br>
-									transferred 6.0 GiB of 8.0 GiB (75.04%)<br>
-									transferred 6.1 GiB of 8.0 GiB (76.04%)<br>
-									transferred 6.2 GiB of 8.0 GiB (77.04%)<br>
-									transferred 6.2 GiB of 8.0 GiB (78.04%)<br>
-									transferred 6.3 GiB of 8.0 GiB (79.04%)<br>
-									transferred 6.4 GiB of 8.0 GiB (80.04%)<br>
-									transferred 6.5 GiB of 8.0 GiB (81.04%)<br>
-									transferred 6.6 GiB of 8.0 GiB (82.04%)<br>
-									transferred 6.6 GiB of 8.0 GiB (83.04%)<br>
-									transferred 6.7 GiB of 8.0 GiB (84.05%)<br>
-									transferred 6.8 GiB of 8.0 GiB (85.05%)<br>
-									transferred 6.9 GiB of 8.0 GiB (86.05%)<br>
-									transferred 7.0 GiB of 8.0 GiB (87.05%)<br>
-									transferred 7.0 GiB of 8.0 GiB (88.05%)<br>
-									transferred 7.1 GiB of 8.0 GiB (89.05%)<br>
-									transferred 7.2 GiB of 8.0 GiB (90.05%)<br>
-									transferred 7.3 GiB of 8.0 GiB (91.05%)<br>
-									transferred 7.4 GiB of 8.0 GiB (92.05%)<br>
-									transferred 7.4 GiB of 8.0 GiB (93.05%)<br>
-									transferred 7.5 GiB of 8.0 GiB (94.05%)<br>
-									transferred 7.6 GiB of 8.0 GiB (95.05%)<br>
-									transferred 7.7 GiB of 8.0 GiB (96.05%)<br>
-									transferred 7.8 GiB of 8.0 GiB (97.05%)<br>
-									transferred 7.8 GiB of 8.0 GiB (98.05%)<br>
-									transferred 7.9 GiB of 8.0 GiB (99.05%)<br>
 									transferred 8.0 GiB of 8.0 GiB (100.00%)<br>
 									
 									Shut down the VM if it's still running (force stop from Proxmox GUI if needed).<br>
