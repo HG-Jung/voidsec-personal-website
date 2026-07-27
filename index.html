@@ -389,8 +389,61 @@
 									systemctl restart ssh<br>
 									Tested key-based login from new sessions.<br>
 
-									4. Docker Installation
-									Bashbash <(wget -qO- https://get.docker.com)
+									4. Docker Installation<br>
+									wget -qO- https://get.docker.com<br>
+
+									5. RustDesk Server Deployment (Docker Compose)<br>
+									Created directory:<br>
+									Bashmkdir -p ~/rustdesk/data && cd ~/rustdesk<br>
+									Used this compose.yml:<br>
+									YAMLservices:<br>
+									  hbbs:<br>
+									    container_name: hbbs<br>
+									    image: rustdesk/rustdesk-server:latest<br>
+									    command: hbbs -r YOUR_SERVER_IP:21117
+									    volumes:<br>
+									      - ./data:/root<br>
+									    network_mode: "host"<br>
+									    restart: unless-stopped<br>
+									  hbbr:<br>
+									    container_name: hbbr<br>
+									    image: rustdesk/rustdesk-server:latest<br>
+									    command: hbbr<br>
+									    volumes:<br>
+									      - ./data:/root<br>
+									    network_mode: "host"<br>
+									    restart: unless-stopped<br>
+									Started the services:<br>
+									Bashdocker compose up -d<br>
+							
+									6. Firewall Configuration (UFW)<br>
+									Bashapt install ufw -y<br>
+									ufw allow OpenSSH<br>
+									ufw allow 21114:21119/tcp<br>
+									ufw allow 21116/udp<br>
+									ufw --force enable<br>
+
+									7. Verification & Key Retrieval<br>
+									Checked logs: docker logs hbbs and docker logs hbbr<br>
+									Retrieved the server public key: cat ~/rustdesk/data/id_ed25519.pub(Key: hehexd)<br>
+
+									8. Client Configuration<br>
+									On every client device:<br>
+									Download RustDesk from rustdesk.com<br>
+									Go to Settings → ID/Relay Server<br>
+									Set:<br>
+									ID Server: nope*nope*nope*nope<br>
+									Key: hehexd<br>
+									Tested successful remote connections.<br>
+									
+									9. Useful Maintenance Commands<br>
+									Restart: cd ~/rustdesk && docker compose restart<br>
+									Update: docker compose pull && docker compose up -d<br>
+									Backup: tar -czf rustdesk-backup-$(date +%Y%m%d).tar.gz ~/rustdesk/data<br>
+									Logs: docker logs -f hbbs<br>
+									
+									Final Result<br>
+									A fully functional, secure, self-hosted RustDesk instance running on a low-cost Vultr VPS. Direct connections work when possible, with automatic fallback to the hosted relay. Perfect for light IT work, remote troubleshooting, and personal use.
 								</p>
 						</details>
 				<h2 id="misc-stuff">Misc. Stuff</h2>
