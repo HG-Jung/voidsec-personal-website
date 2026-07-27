@@ -169,9 +169,8 @@
                 </p>
 				<h3>Home Lab</h3>
                 <p>
-                    PFSense<br>
 						<details>
-							<summary>PFSense Setup</summary>
+							<summary>PFSense Notes</summary>
 								<p>
 									1. Overview<br><br>
 
@@ -205,7 +204,23 @@
 									FW00  →  Zyxel GS1920-24HP Distribution Switch<br>
 									Distribution Switch  →  Proxmox (172.16.0.10), Asterisk PBX, Zyxel APs<br>
 									Company Segment: FortiGate 40F, Ruckus Switch, Ruckus AP  [isolated]<br>
-										
+
+									2.2 Tier Device(s) Role	Ownership<br><br>
+									Tier 0 – Edge Modem ISP Termination/NAT Personal<br>
+									Tier 1 – Core FW pfSense SG-1100 (FW00) Headend Firewall/rOUTER Personal<br>
+									Tier 2 – Dist FW FortiGate 60E (FW001) Downstream Firewall/Segment A Personal<br>
+									Tier 2 – Dist FW FortiGate 60E (FW002) Downstream Firewall/Segment B Personal<br>
+									Tier 2 – Company FortiGate 40F Company Test Segment	Company<br>
+									Tier 3 – Access	Zyxel GS1920-24HP Distribution Switch Personal<br>
+									Tier 3 – Access	Ruckus Switch Company Wireless Distribution	Company<br>
+									Tier 4 – Hosts Dell Proxmox Virtualization Host Personal<br>
+									Tier 4 – Hosts Asterisk PBX	VoIP / Telephony Personal<br>
+									Tier 4 – Wireless Zyxel APs Personal Wireless Access Personal<br>
+									Tier 4 – Wireless Ruckus AP	Company Wireless Access	Company<br>
+
+									3. Device Inventory & IP Addressing
+
+									
 									IP Addressing Scheme<br><br>
 									
 									Network: 172.16.0.0/16<br>
@@ -225,9 +240,6 @@
 
 								</p>
 						</details>
-					FortiNet<br>
-					Ruckus<br>
-					Servers
 						<details>
   							<summary>ProxMox Lab Setup Notes</summary>
 						  	<!-- This is the content that will be hidden or shown -->
